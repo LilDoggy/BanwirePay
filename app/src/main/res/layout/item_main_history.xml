@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/BackGround">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/tvNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="#1"
+            android:textColor="@color/textBlack"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pagada"
+            android:layout_marginStart="20dp"
+            android:layout_toRightOf="@+id/tvNumber"
+            android:textColor="@color/textBlack"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvRef"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ref: 2123"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/tvNumber"
+            android:layout_below="@+id/tvStatus" />
+
+        <ImageView
+            android:id="@+id/imShowDe"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_add_circle_outline"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/tvMoney"
+            android:layout_centerVertical="true"
+            android:textColor="@color/textBlack"
+            android:textStyle="bold"
+            android:text="$ 100 MXN"
+            android:layout_toLeftOf="@+id/imShowDe"
+            android:layout_marginRight="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

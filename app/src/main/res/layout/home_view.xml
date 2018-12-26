@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/BackGround"
+    android:weightSum="1">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_weight=".15">
+
+        <ImageView
+            android:id="@+id/ivDrawer"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="left"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="0dp"
+            android:gravity="center"
+            android:src="@drawable/ic_menu_white" />
+
+        <ImageView
+            android:id="@+id/ivTop"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:src="@drawable/banwirelogo200white" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        android:layout_weight=".25">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/ivProfile"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/profilemini"
+        app:civ_border_color="@color/colorAccent"
+        app:civ_border_width="3dp" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/defaultIcon"
+        android:text="Andres Hernandez"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".6"
+        android:orientation="vertical">
+
+    <View
+        android:id="@+id/vDivider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/defaultIcon"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="15dp"
+       />
+
+    <LinearLayout
+        android:id="@+id/llEdit"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/editMain">
+
+        <EditText
+            android:id="@+id/etSearchTran"
+            android:layout_gravity="center"
+            android:padding="5dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:focusableInTouchMode="true"
+            android:background="@drawable/border_edittext_white"
+            android:imeOptions="actionSearch"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvState"
+
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/defaultIcon"
+        android:text="@string/text_history_account"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/btnShowIndicators"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_show_indicators"
+
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:padding="12dp"
+        android:background="@drawable/border_rectangle_white"
+        android:textColor="@color/defaultIcon"/>
+
+    <TextView
+        android:id="@+id/tvMonth"
+
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/defaultIcon"
+        android:text="@string/text_history_month"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        >
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvHistory"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

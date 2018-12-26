@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/BackGround">
+
+    <RelativeLayout
+        android:id="@+id/rlTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_keyboard_arrow_left"/>
+
+        <ImageView
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:src="@drawable/banwirelogo200white"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="10dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="28dp"
+            android:src="@drawable/ic_refresh"
+            android:visibility="invisible"/>
+
+    </RelativeLayout>
+
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vpPay"
+        android:layout_below="@+id/rlTop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollIndicators="top">
+
+        <android.support.v4.view.PagerTabStrip
+            android:id="@+id/pagerTitles"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </android.support.v4.view.ViewPager>
+
+
+
+</RelativeLayout>

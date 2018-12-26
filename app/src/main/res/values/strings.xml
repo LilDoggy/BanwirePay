@@ -1,3 +1,57 @@
 <resources>
-    <string name="app_name">BanwirePay</string>
+    <string name="app_name">Banwire</string>
+    <string name="tip_login">Ingresa tus datos para acceder</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_Password">Contraseña</string>
+    <string name="enter">Entrar</string>
+    <string name="forget_pass">OLVIDE MIA CONTRASEÑA</string>
+    <string name="tip_chagngedpass">Cambiar contraseña</string>
+    <string name="hint_email_forget">Ingresa tu correo electrónico</string>
+    <string name="send_instructions">Enviar Instrucciones</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+
+    <!-- Menu Sections -->
+    <string name="menu_home">Inicio</string>
+    <string name="menu_pay">Pagos</string>
+    <string name="menu_tools">Instrumentos de Pago</string>
+    <string name="menu_close_session">Salir</string>
+
+    <!-- Main Activity -->
+    <string name="hint_search_transaction">Buscar Transacción por ID</string>
+    <string name="text_history_account">Estado de cuenta del mes</string>
+    <string name="text_history_month">Transacciones del mes</string>
+    <string name="text_show_indicators">Ver indicadores</string>
+    <string name="text_show_trans">Ver transacciones</string>
+
+    <string name="title_activity_settings">Settings</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+
+    <!-- View Pager Payment Fragment -->
+    <string name="pf_title_paid">Pagos Realizados</string>
+    <string name="pf_title_nopaid">Pagos Pendientes</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tip_settings">Configuración</string>
+    <string name="tip_personal_info">Información Personal</string>
+    <string name="tip_bank_info">Información Bancaria</string>
+    <string name="tip_help">Ayuda / Soporte</string>
+    <string name="help_text">Si la aplicación presento alguna falla, deseas enviar comentarios o sugerencias acerca de la App, contáctanos y en breve un representante de Banware se pondrá en contacto contigo.</string>
+    <string name="phone">+52 (55) 1579 9155</string>
+
+    <string name="forgetpasstest">Comunícate a BanWire para\nrecuperar tu contraseña al\ntel: 5515799155</string>
+    <string name="call">Llamar</string>
+    <string name="legal">Legal</string>
+    <string name="Termsandconditions">Términos y Condiciones</string>
+    <string name="AvisoPrivacidad">Aviso de Privacidad</string>
 </resources>
