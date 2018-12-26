@@ -7,8 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ImageView;
@@ -16,16 +14,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.myvoga.banwirepay.R;
-import com.myvoga.banwirepay.adapters.HistoryAdapter;
 import com.myvoga.banwirepay.adapters.ViewPagerAdapter;
+import com.myvoga.banwirepay.dialogs.CardDialog;
 import com.myvoga.banwirepay.fragments.NavigationDrawerFragment;
-import com.myvoga.banwirepay.fragments.PayFragment;
-import com.myvoga.banwirepay.interfaces.IHistoryCallback;
+import com.myvoga.banwirepay.interfaces.IDialogCallback;
 import com.myvoga.banwirepay.interfaces.IItemSelected;
 import com.myvoga.banwirepay.interfaces.INavigateFragments;
-import com.myvoga.banwirepay.models.HistoryModel;
 import com.myvoga.banwirepay.models.PayModel;
-import com.myvoga.banwirepay.utils.DividerDecode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,7 +92,6 @@ public class MainActivity extends AppCompatActivity
         // update the main content by replacing fragments+
 
         Intent i;
-        List<HistoryModel> items = new ArrayList<>();
 
         switch (position){
             case 0:
@@ -132,7 +126,19 @@ public class MainActivity extends AppCompatActivity
                     mNavigationDrawerFragment.openDrawer();
                 break;
             case R.id.btnLoadCards:
-                onNavigationDrawerItemSelected(4);
+                CardDialog dialog = CardDialog.newInstance(new IDialogCallback() {
+                    @Override
+                    public void accept() {
+
+                    }
+
+                    @Override
+                    public void cancel() {
+
+                    }
+                });
+                dialog.setCancelable(false);
+                dialog.show(getSupportFragmentManager(),"CARD_DIALOG");
                 break;
         }
     }

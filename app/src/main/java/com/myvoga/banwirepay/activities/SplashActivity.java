@@ -32,6 +32,7 @@ public class SplashActivity extends Activity {
                 Intent i = new Intent(_context, LoginActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
+                finish();
             }
         }, 2000);
 

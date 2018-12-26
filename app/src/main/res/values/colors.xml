@@ -17,5 +17,6 @@
     <color name="editMain">#C4C3C8</color>
 
     <color name="textBlack">#2B2631</color>
+    <color name="backDialog">#E5E5E5</color>
 
 </resources>

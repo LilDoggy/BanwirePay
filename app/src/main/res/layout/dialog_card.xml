@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:background="@color/backDialog">
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dc_title"
+        android:textColor="@color/textBlack"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="16sp"/>
+
+
+    <TextView
+        android:id="@+id/tvManual"
+        android:layout_marginTop="20dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/dc_manual"
+        android:textColor="@color/textBlack"
+        android:layout_gravity="center"
+        android:padding="5dp"
+        android:background="@drawable/border_black"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/tvScanner"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="25dp"
+        android:padding="5dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/dc_scanner"
+        android:textColor="@color/textBlack"
+        android:background="@drawable/border_black"
+        android:layout_gravity="center"
+        android:gravity="center" />
+
+</LinearLayout>

@@ -54,6 +54,5 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        return;
     }
 }

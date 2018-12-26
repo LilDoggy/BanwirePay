@@ -41,6 +41,11 @@
     <string name="pf_title_paid">Pagos Realizados</string>
     <string name="pf_title_nopaid">Pagos Pendientes</string>
 
+    <!--Dialog Card -->
+    <string name="dc_title">Carga una Tarjeta</string>
+    <string name="dc_manual">Manualmente</string>
+    <string name="dc_scanner">Escanear</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tip_settings">Configuración</string>
