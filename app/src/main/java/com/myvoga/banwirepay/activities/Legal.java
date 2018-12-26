@@ -29,7 +29,7 @@ public class Legal extends Activity {
         ((TextView) findViewById(R.id.termns)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = "https://www.banwirepay.com/home/banwirepay-terminos-y-condiciones.html";
+                String url = "https://www.banwire.com/home/banwire-terminos-y-condiciones.html";
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(url));
                 startActivity(i);
@@ -40,7 +40,7 @@ public class Legal extends Activity {
         ((TextView) findViewById(R.id.privatealert)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = "https://www.banwirepay.com/home/banwirepay-aviso-de-privacidad.html";
+                String url = "https://www.banwire.com/home/banwire-aviso-de-privacidad.html";
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(url));
                 startActivity(i);

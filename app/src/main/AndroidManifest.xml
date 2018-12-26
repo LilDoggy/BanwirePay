@@ -8,24 +8,24 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.SplashActivity">
+        <activity android:name="com.myvoga.banwirepay.activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.ForgetPassActivity" />
+        <activity android:name="com.myvoga.banwirepay.activities.LoginActivity" />
+        <activity android:name="com.myvoga.banwirepay.activities.ForgetPassActivity" />
         <activity
-            android:name=".activities.MainActivity"
+            android:name="com.myvoga.banwirepay.activities.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".activities.HelpSupportActivity"
+            android:name="com.myvoga.banwirepay.activities.HelpSupportActivity"
             android:label="@string/title_activity_main" />
-        <activity android:name=".activities.Legal"></activity>
+        <activity android:name="com.myvoga.banwirepay.activities.Legal"></activity>
     </application>
 
 </manifest>

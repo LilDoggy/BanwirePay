@@ -12,12 +12,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.myvoga.banwirepay.R;
+import com.myvoga.banwirepay.adapters.ViewPagerAdapter;
+import com.myvoga.banwirepay.interfaces.IItemSelected;
 import com.myvoga.banwirepay.interfaces.INavigateFragments;
 import com.myvoga.banwirepay.models.PayModel;
 
 import java.util.List;
 
-public class PayFragment extends Fragment implements View.OnClickListener {
+public class PayFragment extends Fragment implements View.OnClickListener, IItemSelected {
 
     private Context context;
     private List<PayModel> itemsPay;
@@ -25,6 +27,8 @@ public class PayFragment extends Fragment implements View.OnClickListener {
 
     private ViewPager viewPager;
     private ImageView ivBack;
+
+    private ViewPagerAdapter viewPagerAdapter;
 
     public static PayFragment newInstance(Context context, List<PayModel> itemsPay, INavigateFragments callbackNav){
 
@@ -47,6 +51,12 @@ public class PayFragment extends Fragment implements View.OnClickListener {
 
         ivBack.setOnClickListener(this);
 
+        viewPagerAdapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager(),context,itemsPay,this);
+
+        viewPager.setAdapter(viewPagerAdapter);
+
+        viewPager.setOffscreenPageLimit(2);
+
         return view;
     }
 
@@ -57,5 +67,10 @@ public class PayFragment extends Fragment implements View.OnClickListener {
                 callbackNav.popFragment();
                 break;
         }
+    }
+
+    @Override
+    public void callbackSelected(Object model, int position) {
+
     }
 }

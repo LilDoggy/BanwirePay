@@ -3,6 +3,8 @@
     <color name="colorPrimary">#E02D43</color>
     <color name="colorPrimaryDark">#536070</color>
     <color name="colorAccent">#FFFFFF</color>
+
+
     <color name="BackGround">#536070</color>
     <color name="Drawer">#C0BDB8</color>
     <color name="Cell">#FFF7ED</color>
@@ -13,6 +15,7 @@
     <color name="CellDrawer">#C6C3BE</color>
     <color name="defaultIcon">#E1EAf5</color>
     <color name="editMain">#C4C3C8</color>
+
     <color name="textBlack">#2B2631</color>
 
 </resources>

@@ -9,8 +9,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.myvoga.banwirepay.R;
 import com.myvoga.banwirepay.fragments.NoPaidFragment;
 import com.myvoga.banwirepay.fragments.PaidFragment;
+import com.myvoga.banwirepay.interfaces.IItemSelected;
 import com.myvoga.banwirepay.models.PayModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
@@ -19,20 +21,35 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     private Context context;
     private List<PayModel> items;
+    private IItemSelected callback;
 
-    public ViewPagerAdapter(FragmentManager fm, Context context, List<PayModel> items) {
+    private List<PayModel> paidItems;
+    private List<PayModel> noPaidItems;
+
+    public ViewPagerAdapter(FragmentManager fm, Context context, List<PayModel> items, IItemSelected callback) {
         super(fm);
         this.context = context;
         this.items = items;
+        this.callback = callback;
     }
 
     @Override
     public Fragment getItem(int i) {
         switch (i){
             case 0:
-                return PaidFragment.newInstance(context,items,0,context.getResources().getString(R.string.pf_title_paid));
+                paidItems = new ArrayList<>();
+                for (PayModel model : items){
+                    if (model.isPaid())
+                        paidItems.add(model);
+                }
+                return PaidFragment.newInstance(context,paidItems,0,context.getResources().getString(R.string.pf_title_paid),callback);
             case 1:
-                return NoPaidFragment.newInstance(context,items,1,context.getResources().getString(R.string.pf_title_nopaid));
+                noPaidItems = new ArrayList<>();
+                for (PayModel model : items){
+                    if (!model.isPaid())
+                        noPaidItems.add(model);
+                }
+                return NoPaidFragment.newInstance(context,noPaidItems,1,context.getResources().getString(R.string.pf_title_nopaid),callback);
             default:
                 return null;
         }
