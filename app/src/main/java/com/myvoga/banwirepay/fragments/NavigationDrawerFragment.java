@@ -105,7 +105,6 @@ public class NavigationDrawerFragment extends Fragment {
                 R.layout.item_drawer,
                 R.id.tvItem,
                 new String[]{
-                        getString(R.string.menu_home),
                         getString(R.string.menu_pay),
                         getString(R.string.menu_tools),
                         getString(R.string.menu_close_session),

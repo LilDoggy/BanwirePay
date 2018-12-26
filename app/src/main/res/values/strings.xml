@@ -21,7 +21,7 @@
     <!-- Menu Sections -->
     <string name="menu_home">Inicio</string>
     <string name="menu_pay">Pagos</string>
-    <string name="menu_tools">Instrumentos de Pago</string>
+    <string name="menu_tools">Tarjetas</string>
     <string name="menu_close_session">Salir</string>
 
     <!-- Main Activity -->
@@ -30,6 +30,7 @@
     <string name="text_history_month">Transacciones del mes</string>
     <string name="text_show_indicators">Ver indicadores</string>
     <string name="text_show_trans">Ver transacciones</string>
+    <string name="text_load_cards">Cargar Tarjetas</string>
 
     <string name="title_activity_settings">Settings</string>
     <string name="action_settings">Settings</string>

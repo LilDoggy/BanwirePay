@@ -46,43 +46,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:gravity="center"
-        android:layout_margin="5dp"
-        android:orientation="vertical"
-        android:layout_weight=".22">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/ivProfile"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/profilemini"
-            app:civ_border_color="@color/colorAccent"
-            app:civ_border_width="3dp" />
-
-        <TextView
-            android:id="@+id/tvName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:textColor="@color/defaultIcon"
-            android:text="Andres Hernandez"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".63"
+        android:layout_weight=".85"
         android:orientation="vertical">
 
-        <View
-            android:id="@+id/vDivider"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@color/defaultIcon"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -94,42 +60,37 @@
             android:weightSum="10"
             >
 
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rvHistory"
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vpPay"
+                android:layout_below="@+id/rlTop"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="7" />
+                android:layout_weight="8.5">
+
+                <android.support.v4.view.PagerTabStrip
+                    android:id="@+id/pagerTitles"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white" />
+
+            </android.support.v4.view.ViewPager>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:orientation="vertical"
-                android:layout_weight="3"
+                android:layout_weight="1.5"
                 android:layout_gravity="center"
                 android:gravity="center">
 
                 <TextView
-                    android:id="@+id/btnShowIndicators"
+                    android:id="@+id/btnLoadCards"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/text_show_indicators"
+                    android:text="@string/text_load_cards"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
-                    android:layout_marginTop="15dp"
-                    android:gravity="center"
-                    android:padding="12dp"
-                    android:background="@drawable/border_rectangle_white"
-                    android:textColor="@color/defaultIcon"/>
-
-                <TextView
-                    android:id="@+id/btnTrans"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/text_show_trans"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:padding="12dp"
                     android:background="@drawable/border_rectangle_white"
