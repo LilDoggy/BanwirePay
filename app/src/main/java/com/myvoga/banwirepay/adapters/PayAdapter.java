@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.myvoga.banwirepay.R;
 import com.myvoga.banwirepay.adapters.viewHolders.PayViewHolder;
@@ -29,8 +30,18 @@ public class PayAdapter extends RecyclerView.Adapter<PayViewHolder> {
     @NonNull
     @Override
     public PayViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_pays, null, false);
+        //View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_pays, null, false);
+
+
+        View v = LayoutInflater.from(context).inflate(R.layout.item_pays, null, false);
+        RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        v.setLayoutParams(lp);
+
+
         PayViewHolder holder = new PayViewHolder(v,callback,context);
+
+
+
         return holder;
     }
 

@@ -1,35 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootCell"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
     android:orientation="vertical"
     android:layout_gravity="center"
+    android:padding="10dp"
     android:background="@drawable/border_edittext_white">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="10"
+        android:layout_height="0dp"
+        android:layout_weight=".5"
+        android:weightSum="1"
         android:orientation="horizontal"
         android:padding="10dp">
 
         <TextView
             android:id="@+id/tvNum"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.5"
+            android:layout_height="match_parent"
+            android:layout_weight=".15"
             android:text="#54"
-            android:layout_gravity="center"
             android:textColor="@color/textBlack"
             android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tvDescription"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3.5"
+            android:layout_height="match_parent"
+            android:layout_weight=".5"
             android:text="Servicio de Luz"
-            android:layout_gravity="center"
             android:textColor="@color/textBlack"
             android:textStyle="bold"/>
 
@@ -37,29 +40,21 @@
         <TextView
             android:id="@+id/tvAmount"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3.5"
+            android:layout_height="match_parent"
+            android:layout_weight=".35"
             android:text="$ 500 MXM"
-
-            android:layout_gravity="center"
             android:textColor="@color/textBlack"
             android:textStyle="bold"/>
 
-        <ImageView
-            android:id="@+id/imgPay"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="1.5"
-            android:layout_gravity="top"
-            android:src="@drawable/ic_keyboard_arrow_right"
-            android:visibility="invisible"/>
+
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="2"
+        android:layout_height="0dp"
+        android:layout_weight=".5"
+        android:weightSum="1"
         android:orientation="horizontal"
         android:paddingTop="5dp"
         android:paddingStart="10dp"
@@ -69,21 +64,19 @@
         <TextView
             android:id="@+id/tvRef"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_weight=".5"
             android:textColor="@color/textBlack"
             android:textSize="12sp"
-            android:gravity="left"
             android:textStyle="bold"
             android:text="Ref: 33394949494"/>
 
         <TextView
             android:id="@+id/tvDate"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_weight=".5"
             android:textSize="12sp"
-            android:gravity="right"
             android:textColor="@color/textBlack"
             android:textStyle="bold"
             android:text="Fecha: hehejeee"/>
