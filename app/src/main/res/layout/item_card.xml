@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/border_edittext_white"
+    android:padding="15dp">
+
+    <TextView
+        android:id="@+id/tvBank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Banorte - Debito"
+        android:textColor="@color/textBlack"
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:id="@+id/tvCardNumber"
+        android:layout_below="@+id/tvBank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="********* 4587"
+        android:textColor="@color/textBlack"
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_below="@+id/tvCardNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vencimiento: 11/22"
+        android:textColor="@color/textBlack"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imgDelete"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_close"/>
+
+</RelativeLayout>

@@ -19,12 +19,27 @@ public class CardDialog extends DialogFragment implements View.OnClickListener {
 
     private TextView tvManual;
     private TextView tvScanner;
+    private TextView tvTitle;
+
+    private boolean isSimpleDialog = true;
+    private String title;
+    private String message;
 
     public CardDialog(){}
 
     public static CardDialog newInstance(IDialogCallback callback){
         CardDialog dialog = new CardDialog();
         dialog.callback = callback;
+
+        return dialog;
+    }
+
+    public static CardDialog newInstance(IDialogCallback callback, String title, String message){
+        CardDialog dialog = new CardDialog();
+        dialog.callback = callback;
+        dialog.title = title;
+        dialog.message = message;
+        dialog.isSimpleDialog = false;
 
         return dialog;
     }
@@ -36,11 +51,19 @@ public class CardDialog extends DialogFragment implements View.OnClickListener {
 
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 
+        tvTitle = view.findViewById(R.id.tvTitle);
         tvManual = view.findViewById(R.id.tvManual);
         tvScanner = view.findViewById(R.id.tvScanner);
 
         tvManual.setOnClickListener(this);
         tvScanner.setOnClickListener(this);
+
+        if (!isSimpleDialog){
+            tvManual.setVisibility(View.GONE);
+
+            tvTitle.setText(title);
+            tvScanner.setText(message);
+        }
 
         return view;
     }
@@ -50,11 +73,13 @@ public class CardDialog extends DialogFragment implements View.OnClickListener {
         switch (v.getId()){
             case R.id.tvManual:
                 dismiss();
-                callback.accept();
+                if (callback != null)
+                    callback.accept();
                 break;
             case R.id.tvScanner:
                 dismiss();
-                callback.cancel();
+                if (callback != null)
+                    callback.cancel();
                 break;
         }
 

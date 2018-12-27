@@ -1,14 +1,17 @@
 package com.myvoga.banwirepay.activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.support.v4.widget.DrawerLayout;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,14 +19,20 @@ import android.widget.Toast;
 import com.myvoga.banwirepay.R;
 import com.myvoga.banwirepay.adapters.ViewPagerAdapter;
 import com.myvoga.banwirepay.dialogs.CardDialog;
+import com.myvoga.banwirepay.fragments.CardsFragment;
 import com.myvoga.banwirepay.fragments.NavigationDrawerFragment;
 import com.myvoga.banwirepay.interfaces.IDialogCallback;
 import com.myvoga.banwirepay.interfaces.IItemSelected;
 import com.myvoga.banwirepay.interfaces.INavigateFragments;
 import com.myvoga.banwirepay.models.PayModel;
+import com.myvoga.banwirepay.utils.CardsPreferences;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.card.payment.CardIOActivity;
+import io.card.payment.CreditCard;
+import io.card.payment.DataEntryActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks, View.OnClickListener,
@@ -45,6 +54,9 @@ public class MainActivity extends AppCompatActivity
     private ImageView ivBack;
 
     private ViewPagerAdapter viewPagerAdapter;
+
+    private static int SCAN_REQUEST = 1224;
+    private static int KEY_REQUEST = 1226;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,7 +117,8 @@ public class MainActivity extends AppCompatActivity
                 }
                 break;
             case 1:
-                Toast.makeText(this, "Tarjetas", Toast.LENGTH_SHORT).show();
+                CardsFragment fragment = CardsFragment.newInstance(this,this);
+                showFragment(fragment);
                 break;
             case 2:
                 i = new Intent(_context, LoginActivity.class);
@@ -129,18 +142,44 @@ public class MainActivity extends AppCompatActivity
                 CardDialog dialog = CardDialog.newInstance(new IDialogCallback() {
                     @Override
                     public void accept() {
-
+                        keyNewCard();
                     }
 
                     @Override
                     public void cancel() {
-
+                        scanNewCard();
                     }
                 });
                 dialog.setCancelable(false);
                 dialog.show(getSupportFragmentManager(),"CARD_DIALOG");
                 break;
         }
+    }
+
+    private void keyNewCard(){
+        Intent scanIntent = new Intent(this, DataEntryActivity.class);
+
+        // customize these values to suit your needs.
+        scanIntent.putExtra(CardIOActivity.EXTRA_REQUIRE_EXPIRY, true);
+        scanIntent.putExtra(CardIOActivity.EXTRA_REQUIRE_CVV, true);
+        scanIntent.putExtra(CardIOActivity.EXTRA_USE_CARDIO_LOGO, false);
+        scanIntent.putExtra(CardIOActivity.EXTRA_CAPTURED_CARD_IMAGE, true);
+        scanIntent.putExtra(CardIOActivity.EXTRA_REQUIRE_CARDHOLDER_NAME, true);
+
+        startActivityForResult(scanIntent, KEY_REQUEST);
+    }
+
+    private void scanNewCard(){
+        Intent scanIntent = new Intent(this, CardIOActivity.class);
+
+        // customize these values to suit your needs.
+        scanIntent.putExtra(CardIOActivity.EXTRA_REQUIRE_EXPIRY, true);
+        scanIntent.putExtra(CardIOActivity.EXTRA_REQUIRE_CVV, true);
+        scanIntent.putExtra(CardIOActivity.EXTRA_USE_CARDIO_LOGO, false);
+        scanIntent.putExtra(CardIOActivity.EXTRA_CAPTURED_CARD_IMAGE, true);
+        scanIntent.putExtra(CardIOActivity.EXTRA_REQUIRE_CARDHOLDER_NAME, true);
+
+        startActivityForResult(scanIntent, SCAN_REQUEST);
     }
 
     //Interfaces to Navigate between Activity and Fragments
@@ -186,5 +225,50 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void callbackSelected(Object model, int position) {
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == SCAN_REQUEST || requestCode == KEY_REQUEST){
+            try{
+
+                CardDialog cardDialog = null;
+
+                CreditCard card = data.getParcelableExtra(CardIOActivity.EXTRA_SCAN_RESULT);
+
+                String name = card.cardholderName;
+
+                if (name.isEmpty() || !name.contains(" ")){
+                    cardDialog = CardDialog.newInstance(null,"Ingrese el nombre del titular correctamente","Aceptar");
+                }else{
+                    cardDialog = CardDialog.newInstance(null,"Tarjeta Registrada","Aceptar");
+                }
+
+                saveCard(card);
+
+                cardDialog.setCancelable(true);
+                cardDialog.show(getSupportFragmentManager(),"CARD_ERROR");
+
+            }catch (Exception e){
+                CardDialog cardDialog = CardDialog.newInstance(null,"Ha ocurrido un error","Aceptar");
+                cardDialog.setCancelable(true);
+                cardDialog.show(getSupportFragmentManager(),"CARD_ERROR");
+            }
+        }
+
+        InputMethodManager imm = (InputMethodManager) this.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = this.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(this);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    private void saveCard(CreditCard card){
+        CardsPreferences.saveNewCard(this,card);
     }
 }
