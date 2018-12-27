@@ -57,7 +57,7 @@ public class NoPaidFragment extends Fragment {
         rvNoPaid.setAdapter(adapter);
 
         rvNoPaid.addItemDecoration(new DividerDecode(
-                getResources().getDimensionPixelSize(R.dimen.divider),2));
+                getResources().getDimensionPixelSize(R.dimen.divider),1));
 
         return view;
     }

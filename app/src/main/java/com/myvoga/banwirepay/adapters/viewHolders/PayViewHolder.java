@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -33,7 +34,7 @@ public class PayViewHolder extends RecyclerView.ViewHolder {
         this.tvDesc = itemView.findViewById(R.id.tvDescription);
         this.tvAmount = itemView.findViewById(R.id.tvAmount);
         this.tvRef = itemView.findViewById(R.id.tvRef);
-        //this.imgPay = itemView.findViewById(R.id.imgPay);
+        this.imgPay = itemView.findViewById(R.id.imgPay);
         this.tvDate = itemView.findViewById(R.id.tvDate);
         this.callback = callback;
         this.context = context;
@@ -56,15 +57,18 @@ public class PayViewHolder extends RecyclerView.ViewHolder {
         if (!model.isPaid()){
             tvAmount.setTextColor(context.getResources().getColor(R.color.colorPrimary));
 
-            //imgPay.setVisibility(View.VISIBLE);
+            imgPay.setVisibility(View.VISIBLE);
 
-           /* imgPay.setOnClickListener(new View.OnClickListener() {
+            imgPay.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (callback != null)
                         callback.callbackSelected(model,getAdapterPosition());
                 }
-            });*/
+            });
+
+            rootCell.setLayoutParams(new
+                    LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT));
         }
     }
 
