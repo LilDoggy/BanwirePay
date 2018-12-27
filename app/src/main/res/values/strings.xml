@@ -46,6 +46,8 @@
     <string name="dc_manual">Manualmente</string>
     <string name="dc_scanner">Escanear</string>
 
+    <string name="dc_choose">Elige tu método de pago</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tip_settings">Configuración</string>

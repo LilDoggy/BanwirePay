@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.myvoga.banwirepay.R;
 import com.myvoga.banwirepay.adapters.ViewPagerAdapter;
 import com.myvoga.banwirepay.dialogs.CardDialog;
+import com.myvoga.banwirepay.dialogs.ListCardDialog;
 import com.myvoga.banwirepay.fragments.CardsFragment;
 import com.myvoga.banwirepay.fragments.NavigationDrawerFragment;
 import com.myvoga.banwirepay.interfaces.IDialogCallback;
@@ -36,7 +37,7 @@ import io.card.payment.DataEntryActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks, View.OnClickListener,
-        INavigateFragments, IItemSelected {
+        INavigateFragments {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -94,7 +95,19 @@ public class MainActivity extends AppCompatActivity
         modelList.add(new PayModel("54","Concepto 1","500","42526622","03/11/2018",false));
         modelList.add(new PayModel("54","Concepto 2","1500","22737383","03/11/2018",false));
 
-        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(),this,modelList,this);
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), this, modelList, new IItemSelected() {
+            @Override
+            public void callbackSelected(Object model, int position) {
+                List<CreditCard> cardList = CardsPreferences.getCards(_context);
+                if (cardList.size() > 0){
+                    ListCardDialog dialog = ListCardDialog.newInstance(_context,cardList);
+                    dialog.setCancelable(true);
+                    dialog.show(getSupportFragmentManager(),"DIALOG_LIST");
+                }else {
+                    Toast.makeText(_context, "No hay tarjetas asociadas", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         viewPager.setAdapter(viewPagerAdapter);
     }
@@ -223,11 +236,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void callbackSelected(Object model, int position) {
-
-    }
-
-    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -246,7 +254,10 @@ public class MainActivity extends AppCompatActivity
                     cardDialog = CardDialog.newInstance(null,"Tarjeta Registrada","Aceptar");
                 }
 
-                saveCard(card);
+                if (!CardsPreferences.checkExistCard(this,card))
+                    saveCard(card);
+                else
+                    cardDialog = CardDialog.newInstance(null,"La tarjeta ya existe","Aceptar");
 
                 cardDialog.setCancelable(true);
                 cardDialog.show(getSupportFragmentManager(),"CARD_ERROR");

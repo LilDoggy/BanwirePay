@@ -83,7 +83,7 @@ public class CardsFragment extends Fragment implements View.OnClickListener, IIt
     @Override
     public void callbackSelected(Object model, int position) {
         CreditCard card = (CreditCard) model;
-        CardsPreferences.deleteCard(context,card.cardNumber);
+        CardsPreferences.deleteCard(context,card);
 
         cardList.remove(position);
 

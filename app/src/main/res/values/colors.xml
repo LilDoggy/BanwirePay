@@ -18,5 +18,6 @@
 
     <color name="textBlack">#2B2631</color>
     <color name="backDialog">#E5E5E5</color>
+    <color name="back_dialog">#E6252525</color>
 
 </resources>

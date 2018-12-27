@@ -27,12 +27,6 @@ public class CardsPreferences {
 
         if (cards == null)
             cards = new ArrayList<>();
-        else if (cards.size() > 0){
-            for (int i = 0; i < cards.size(); i++){
-                if (cards.get(i).cardNumber == card.cardNumber)
-                    return;
-            }
-        }
 
         cards.add(card);
 
@@ -46,7 +40,7 @@ public class CardsPreferences {
 
     }
 
-    public static void deleteCard(Context context, String numberCard){
+    public static void deleteCard(Context context, CreditCard creditCard){
         SharedPreferences preferences = context.getSharedPreferences(PREF,0);
 
         Gson gson = new Gson();
@@ -54,11 +48,11 @@ public class CardsPreferences {
         Type type = new TypeToken<List< CreditCard >>() {}.getType();
         List<CreditCard> cards = gson.fromJson(json,type);
 
-        if (cards != null){
+        if (cards == null){
             cards = new ArrayList<>();
         } else if (cards != null && cards.size() > 0){
             for (CreditCard card : cards){
-                if (card.cardNumber == numberCard)
+                if (card.cardNumber.contentEquals(creditCard.cardNumber))
                     cards.remove(card);
             }
         }
@@ -70,6 +64,29 @@ public class CardsPreferences {
         editor.putString(PREF_CARDS,toSave);
 
         editor.commit();
+    }
+
+    public static boolean checkExistCard(Context context, CreditCard card){
+
+        boolean check = false;
+
+        SharedPreferences preferences = context.getSharedPreferences(PREF,0);
+
+        Gson gson = new Gson();
+        String json = preferences.getString(PREF_CARDS,"");
+        Type type = new TypeToken<List< CreditCard >>() {}.getType();
+        List<CreditCard> cards = gson.fromJson(json,type);
+
+        if (cards == null)
+            cards = new ArrayList<>();
+        else if (cards.size() > 0){
+            for (int i = 0; i < cards.size(); i++){
+                if (cards.get(i).cardNumber.contentEquals(card.cardNumber))
+                    check = true;
+            }
+        }
+
+        return check;
     }
 
     public static List<CreditCard> getCards(Context context){

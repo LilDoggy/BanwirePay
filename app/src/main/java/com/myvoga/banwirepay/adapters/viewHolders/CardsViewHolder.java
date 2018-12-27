@@ -37,11 +37,15 @@ public class CardsViewHolder extends RecyclerView.ViewHolder {
         String lastCardNumber = card.cardNumber.substring(card.cardNumber.length() - 4, card.cardNumber.length());
         tvNumberCard.setText("******** " + lastCardNumber);
 
-        imgDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                callback.callbackSelected(card,getAdapterPosition());
-            }
-        });
+        if (callback == null){
+            imgDelete.setVisibility(View.GONE);
+        }else{
+            imgDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callback.callbackSelected(card,getAdapterPosition());
+                }
+            });
+        }
     }
 }
