@@ -116,24 +116,16 @@ public class MainActivity extends AppCompatActivity
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments+
 
-        Intent i;
-
         switch (position){
             case 0:
-                for (Fragment fragment:getSupportFragmentManager().getFragments()) {
-//                    if (fragment instanceof NavigationDrawerFragment) {
-//                        continue;
-//                    }
-//                    else {
-                        getSupportFragmentManager().beginTransaction().remove(fragment).commit();
-//                    }
-                }
+                onBackPressed();
                 break;
             case 1:
                 CardsFragment fragment = CardsFragment.newInstance(this,this);
                 showFragment(fragment);
                 break;
             case 2:
+                Intent i;
                 i = new Intent(_context, LoginActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
